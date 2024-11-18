@@ -10,13 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('reviews', function (Blueprint $table) {
-            $table->id();
-            $table->string('comment');
-            $table->integer('rating');
-        });
-    }
+{
+    Schema::create('reviews', function (Blueprint $table) {
+        $table->id();
+        $table->unsignedBigInteger('movie_id'); // Foreign key to movies table
+        $table->unsignedBigInteger('user_id'); // Foreign key to users table (if reviews are tied to users)
+        $table->string('comment');
+        $table->integer('rating');
+
+        // Add foreign key constraints
+        $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+    });
+}
 
     /**
      * Reverse the migrations.

@@ -25,6 +25,8 @@ Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
 
 Route::get('/', [MovieController::class, 'index'])->name('movies.index');
 
+Route::post('/movies/{movie}/reviews', [MovieController::class, 'addReview'])->name('reviews.add');
+Route::post('/movies/{id}/reviews', [MovieController::class, 'storeReview'])->name('reviews.add');
 
 
 

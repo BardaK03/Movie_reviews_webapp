@@ -37,7 +37,28 @@
         <p><strong>Description:</strong> {{ $movie->description }}</p>
       </div>
     </div>
+    @auth
+    <<form action="{{ route('reviews.add', $movie->id) }}" method="POST">
+    @csrf
+    <label for="comment">Your Review:</label>
+    <textarea name="comment" id="comment" required></textarea>
 
+    <label for="rating">Rating:</label>
+    <select name="rating" id="rating" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+    @else
+        <p><a href="{{ route('login') }}">Log in</a> to leave a review.</p>
+    @endauth
+</section>
     <a href="{{ url('/') }}" class="back-button">Back to Movie List</a>
   </main>
 
