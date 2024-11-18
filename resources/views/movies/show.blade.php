@@ -10,21 +10,23 @@
 </head>
 <body>
 
-  <header>
+<header>
+    <button onclick="window.location.href='{{ route('movies.index') }}'" class="back-button">Back to Movie List</button>
     <h1>{{ $movie->name }} - Movie Details</h1>
     <nav>
-      @if (Route::has('login'))
-        @auth
-          <a href="{{ url('/dashboard') }}" class="nav-link">My Account</a>
-        @else
-          <a href="{{ route('login') }}" class="nav-link">Log in</a>
-          @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="nav-link">Register</a>
-          @endif
-        @endauth
-      @endif
+        @if (Route::has('login'))
+            @auth
+                <a href="{{ url('/dashboard') }}" class="nav-link">My Account</a>
+            @else
+                <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="nav-link">Register</a>
+                @endif
+            @endauth
+        @endif
     </nav>
-  </header>
+</header>
+
 
   <main class="movie-details">
     <div class="movie-card">
