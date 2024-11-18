@@ -37,6 +37,13 @@
         <p><strong>Description:</strong> {{ $movie->description }}</p>
       </div>
     </div>
+    <h3>Reviews</h3>
+    @foreach($movie->reviews as $review)
+        <div class="review">
+            <p><strong>User:</strong> {{ $review->user->name }} <!-- Assuming you have a user relationship -->
+            <p><strong>Rating:</strong> {{ $review->rating }} / 5</p>
+            <p><strong>Comment:</strong> {{ $review->comment }}</p>        </div>
+    @endforeach
     @auth
     <<form action="{{ route('reviews.add', $movie->id) }}" method="POST">
     @csrf
