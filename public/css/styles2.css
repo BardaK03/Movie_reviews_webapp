@@ -95,6 +95,7 @@ header nav a:hover {
 }
 
 /* Reviews Section */
+
 .review {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -103,11 +104,18 @@ header nav a:hover {
   margin: 10px 0;
   width: 80%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Ensure the review doesn't exceed the container width */
+    overflow: hidden; /* Prevent overflow for extremely long content */
 }
 
 .review p {
   margin: 5px 0;
   font-size: 14px;
+  word-wrap: break-word; /* Break long words if necessary */
+    overflow-wrap: break-word; /* Modern browsers support */
+    white-space: normal; /* Allow text to wrap naturally */
+    line-height: 1.5; /* Add spacing between lines for better readability */
+    text-align: justify; /* Optional: justify text for cleaner look */
 }
 
 .review .btn {

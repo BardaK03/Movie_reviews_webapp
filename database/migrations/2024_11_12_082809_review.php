@@ -13,8 +13,8 @@ return new class extends Migration
 {
     Schema::create('reviews', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('movie_id'); // Foreign key to movies table
-        $table->unsignedBigInteger('user_id'); // Foreign key to users table (if reviews are tied to users)
+        $table->unsignedBigInteger('movie_id'); /
+        $table->unsignedBigInteger('user_id'); 
         $table->string('comment');
         $table->integer('rating');
 
