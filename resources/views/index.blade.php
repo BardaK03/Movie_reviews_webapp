@@ -11,7 +11,7 @@
 <body>
 
   <header>
-    <h1>Movie Reviews</h1>
+    <h1>SceneByScene</h1>
     <nav>
       @if (Route::has('login'))
         @auth

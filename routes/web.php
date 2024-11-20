@@ -3,8 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
-use App\Http\Controllers\ReviewController; // Add this use statement at the top
-
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('index');
@@ -42,4 +42,9 @@ Route::post('/movies/{movie}/reviews', [ReviewController::class, 'store'])->name
 Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
 Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
 Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
 require __DIR__.'/auth.php';
